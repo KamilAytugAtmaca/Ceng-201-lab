@@ -1,1 +1,16 @@
+public class PatientList {
+private static class Node {
+        Patient patient;
+        Node next;
+        Node(Patient patient) {
+            this.patient = patient;
+            this.next = null;
+  }
+}
+   
+ private Node head;
+ private Node tail;
+ public PatientList() {
+  this.head = null;
+}
 
