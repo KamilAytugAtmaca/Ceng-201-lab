@@ -1,1 +1,9 @@
-public class TreatmentQueue{ 
+public class TreatmentQueue {
+ private static class Node {
+ TreatmentRequest request;
+        Node next;
+ Node(TreatmentRequest request) {
+            this.request = request;
+            this.next = null;
+        }
+    }
