@@ -1,1 +1,3 @@
-
+public class PatientListTest {
+public static void main(String[] args){
+PatientList patientList = new PatientList();
