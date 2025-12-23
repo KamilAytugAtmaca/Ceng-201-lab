@@ -1,1 +1,10 @@
-
+public class DischargeStack {
+                              // Create a Node class
+    private static class Node {
+        DischargeRecord record;
+        Node next;
+ Node(DischargeRecord record) {
+            this.record = record;
+            this.next = null;
+   }
+}
