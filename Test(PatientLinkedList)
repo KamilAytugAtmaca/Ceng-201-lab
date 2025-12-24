@@ -1,3 +1,17 @@
 public class PatientListTest {
-public static void main(String[] args){
-PatientList patientList = new PatientList();
+ public static void main(String[] args) {
+ PatientList list = new PatientList();
+        list.addPatient(new Patient(1, "Aytug Atmaca", 5, 22));
+        list.addPatient(new Patient(2, "Elif Ozsoy", 8, 21));
+        list.addPatient(new Patient(3, "Muhammed Yıldız", 3, 25));
+        list.addPatient(new Patient(4, "Zeynep Sahin", 6, 20));
+        list.addPatient(new Patient(5, "Enes Orkun", 4, 23));
+        list.removePatient(3);
+
+        Patient p = list.findPatient(2);
+        System.out.println("Found patient: " + p);
+
+        System.out.println("Final Patient List:");
+        list.printList();
+    }
+}
