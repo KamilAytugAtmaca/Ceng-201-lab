@@ -10,6 +10,7 @@ public Patient(int id, String name, int severity, int age){
     this.age = age ;
 }
 public String toString() {
-        return " PATIENT ID : " + id + ", NAME: " + name + ", SEVERITY: " + severity + ", AGE: " + age;
+       return "ID: " + id + ", Name: " + name +
+               ", Severity: " + severity + ", Age: " + age;
  }
 }
