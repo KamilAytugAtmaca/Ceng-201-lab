@@ -1,8 +1,8 @@
-public class TreatmentQueue {
- private static class Node {
+public class TreatmentQueue {        //  create TreatmentQueue class
+ private static class Node {          // make node class for queue
  TreatmentRequest request;
         Node next;
- Node(TreatmentRequest request) {
+ Node(TreatmentRequest request) {    // create node constructor
             this.request = request;
             this.next = null;
         }
