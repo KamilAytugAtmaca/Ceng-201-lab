@@ -11,7 +11,7 @@ public class PatientList {
     public PatientList() {
         head = null;
     }
-    public void addPatient(Patient p) {
+    public void addPatient(Patient p) {  
         Node newNode = new Node(p);
         if (head == null) {
             head = newNode;
