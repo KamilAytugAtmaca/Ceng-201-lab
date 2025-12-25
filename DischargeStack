@@ -1,5 +1,5 @@
 public class DischargeStack {
-                              // Create a Node class
+                              // Create a node class
     private static class Node {
         DischargeRecord record;
         Node next;
