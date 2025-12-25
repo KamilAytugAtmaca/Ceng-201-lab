@@ -1,10 +1,47 @@
-public class DischargeStack {
-                              // Create a node class
-    private static class Node {
-        DischargeRecord record;
-        Node next;
+public class DischargeStack { 
+                                            // create a node class
+private static class Node {
+        DischargeRecord record;            //Each node maintains a discharge record.
+        Node next;             
  Node(DischargeRecord record) {
             this.record = record;
             this.next = null;
-   }
+        }
+    }
+
+                                           // Shows the top element of the stack.
+    private Node top;
+    public DischargeStack() {
+        this.top = null;
+    }
+                                                
+    public void push(DischargeRecord record) {
+        Node newNode = new Node(record);        // new node is created
+        newNode.next = top;            
+        top = newNode;                 
+    }
+
+    public DischargeRecord pop() {            // returns the record at the top of the stack
+        if (top == null) {
+            return null; 
+        }
+        DischargeRecord record = top.record; 
+        top = top.next;                     
+        return record;
+    }
+    public DischargeRecord peek() {                // shows the discharged patient without deleting 
+        if (top == null) {
+            return null;
+        }
+        return top.record; 
+    }
+
+                                                    // prints all discharge records in the stack
+    public void printStack() {
+        Node current = top; 
+        while (current != null) {
+            System.out.println(current.record);
+            current = current.next; 
+        }
+     }
 }
