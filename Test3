@@ -1,1 +1,30 @@
+public class Test3 {
+    public static void main(String[] args) {
+        DischargeStack stack = new DischargeStack();
+        // Adding 5 discharge records
+        stack.push(new DischargeRecord(111));
+        stack.push(new DischargeRecord(112));
+        stack.push(new DischargeRecord(113));
+        stack.push(new DischargeRecord(114));
+        stack.push(new DischargeRecord(115));
 
+        System.out.println("After pushing 5 discharge records:");
+        stack.printStack();
+        System.out.println("Size: " + stack.size());
+        System.out.println();
+
+        System.out.println("************************************\n");
+
+        // Popping 2 elements
+        System.out.println("Pop 1: " + stack.pop());
+        System.out.println("Pop 2: " + stack.pop());
+        System.out.println();
+
+        System.out.println("************************************\n");
+
+        // Remaining stack
+        System.out.println("Remaining stack:");
+        stack.printStack();
+        System.out.println("Final size: " + stack.size());
+    }
+}
