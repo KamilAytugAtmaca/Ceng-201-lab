@@ -1,1 +1,62 @@
+public class Test4 {
+    public static void main(String[] args) {
+        HospitalSystem hs = new HospitalSystem();
+        /* =========================
+           ADD PATIENTS
 
+           ========================= */
+        hs.addPatient(new Patient(101, "Aytug Atmaca", 3, 22));
+        hs.addPatient(new Patient(102, "Elif Ozsoy", 6, 21));
+        hs.addPatient(new Patient(103, "Muhammed Yildiz", 8, 45));
+        hs.addPatient(new Patient(104, "Ihsan Celik", 4, 23));
+        hs.addPatient(new Patient(105, "Enes Orkun", 9, 38));
+        /* =========================
+           ADD EXTRA PATIENTS
+
+           ========================= */
+        hs.addPatient(new Patient(106, "Ali Baran", 5, 31));
+        hs.addPatient(new Patient(107, "Efe Ozdumanlar", 7, 28));
+        hs.addPatient(new Patient(108, "Franck Lampard", 2, 19));
+        hs.addPatient(new Patient(109, "Erling Haaland", 10, 61));
+        hs.addPatient(new Patient(110, "Severus Snape", 1, 34));
+
+        /* =========================
+           TREATMENT REQUESTS
+           ========================= */
+
+        // Normal requests
+        hs.addTreatmentRequest(101, false);
+        hs.addTreatmentRequest(102, false);
+        hs.addTreatmentRequest(103, false);
+        hs.addTreatmentRequest(104, false);
+        hs.addTreatmentRequest(105, false);
+
+        // Priority requests
+        hs.addTreatmentRequest(106, true);
+        hs.addTreatmentRequest(107, true);
+        hs.addTreatmentRequest(108, true);
+
+        /* =========================
+           DISCHARGE RECORDS
+           ========================= */
+
+        hs.addDischargeRecord(109);
+        hs.addDischargeRecord(110);
+
+        /* =========================
+           PROCESS TREATMENTS
+           (priority first)
+           ========================= */
+
+        hs.processNextTreatment();
+        hs.processNextTreatment();
+        hs.processNextTreatment();
+        hs.processNextTreatment();
+
+        /* =========================
+           FINAL SYSTEM STATE
+           ========================= */
+
+        hs.printSystem();
+    }
+}
