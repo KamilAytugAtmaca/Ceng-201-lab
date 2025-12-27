@@ -1,3 +1,92 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 public class HospitalSystem {
+    private PatientList patientList;
+    private TreatmentQueue normalQueue;
+    private TreatmentQueue priorityQueue;
+    private DischargeStack dischargeStack;
+    private HashMap<Integer, Patient> patientMap;
+
+    public HospitalSystem() {
+        patientList = new PatientList();
+        normalQueue = new TreatmentQueue();
+        priorityQueue = new TreatmentQueue();
+        dischargeStack = new DischargeStack();
+        patientMap = new HashMap<>();
+    }
+
+    // Add patient to system
+    public void addPatient(Patient p) {
+        patientList.addPatient(p);
+        patientMap.put(p.id, p);
+    }
+
+    // Add treatment request
+    public void addTreatmentRequest(int patientId, boolean isPriority) {
+        TreatmentRequest request = new TreatmentRequest(patientId, isPriority);
+        if (isPriority) {
+            priorityQueue.enqueue(request);
+        } else {
+            normalQueue.enqueue(request);
+        }
+    }
+
+    // Add discharge record manually
+    public void addDischargeRecord(int patientId) {
+        dischargeStack.push(new DischargeRecord(patientId));
+    }
+
+    // Process next treatment (priority first)
+    public void processNextTreatment() {
+        TreatmentRequest request;
+
+        if (priorityQueue.size() > 0) {
+            request = priorityQueue.dequeue();
+        } else {
+            request = normalQueue.dequeue();
+        }
+
+        if (request == null) {
+            System.out.println("No treatment requests to process.");
+            return;
+        }
+
+        System.out.println("Processing treatment for patient ID: " + request.patientId);
+        dischargeStack.push(new DischargeRecord(request.patientId));
+    }
+
+    // Print system state
+    public void printSystem() {
+        System.out.println("\n--- Patient List ---");
+        patientList.printList();
+
+        System.out.println("\n--- Priority Queue ---");
+        priorityQueue.printQueue();
+
+        System.out.println("\n--- Normal Queue ---");
+        normalQueue.printQueue();
+
+        System.out.println("\n--- Discharge Stack ---");
+        dischargeStack.printStack();
+    }
+
+    // Sort patients by severity (Bubble Sort)
+    public void printSortedBySeverity() {
+        ArrayList<Patient> patients = new ArrayList<>(patientMap.values());
+
+        for (int i = 0; i < patients.size() - 1; i++) {
+            for (int j = 0; j < patients.size() - i - 1; j++) {
+                if (patients.get(j).severity < patients.get(j + 1).severity) {
+                    Patient temp = patients.get(j);
+                    patients.set(j, patients.get(j + 1));
+                    patients.set(j + 1, temp);
+                }
+            }
+        }
+
+        System.out.println("\n--- Patients Sorted by Severity ---");
+        for (Patient p : patients) {
+            System.out.println(p);
+        }
+    }
+}
