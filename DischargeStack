@@ -1,47 +1,56 @@
-public class DischargeStack { 
-                                            // create a node class
-private static class Node {
-        DischargeRecord record;            //Each node maintains a discharge record.
-        Node next;             
- Node(DischargeRecord record) {
+public class DischargeStack {
+
+    private static class Node {
+        DischargeRecord record;
+        Node next;
+
+        Node(DischargeRecord record) {
             this.record = record;
             this.next = null;
         }
     }
 
-                                           // Shows the top element of the stack.
     private Node top;
+    private int size;
+
     public DischargeStack() {
-        this.top = null;
-    }
-                                                
-    public void push(DischargeRecord record) {
-        Node newNode = new Node(record);        // new node is created
-        newNode.next = top;            
-        top = newNode;                 
+        top = null;
+        size = 0;
     }
 
-    public DischargeRecord pop() {            // returns the record at the top of the stack
-        if (top == null) {
-            return null; 
-        }
-        DischargeRecord record = top.record; 
-        top = top.next;                     
-        return record;
+    public void push(DischargeRecord record) {
+        Node newNode = new Node(record);
+        newNode.next = top;
+        top = newNode;
+        size++;
     }
-    public DischargeRecord peek() {                // shows the discharged patient without deleting 
+
+    public DischargeRecord pop() {
         if (top == null) {
             return null;
         }
-        return top.record; 
+        DischargeRecord removed = top.record;
+        top = top.next;
+        size--;
+        return removed;
     }
 
-                                                    // prints all discharge records in the stack
-    public void printStack() {
-        Node current = top; 
-        while (current != null) {
-            System.out.println(current.record);
-            current = current.next; 
+    public DischargeRecord peek() {
+        if (top == null) {
+            return null;
         }
-     }
+        return top.record;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public void printStack() {
+        Node temp = top;
+        while (temp != null) {
+            System.out.println(temp.record);
+            temp = temp.next;
+        }
+    }
 }
