@@ -1,9 +1,63 @@
-public class TreatmentQueue {        //  create TreatmentQueue class
- private static class Node {          // make node class for queue
- TreatmentRequest request;
+public class TreatmentQueue {
+
+    private static class Node {
+        TreatmentRequest request;
         Node next;
- Node(TreatmentRequest request) {    // create node constructor
+
+        Node(TreatmentRequest request) {
             this.request = request;
             this.next = null;
         }
     }
+
+    private Node front;
+    private Node rear;
+    private int size;
+
+    public TreatmentQueue() {
+        front = null;
+        rear = null;
+        size = 0;
+    }
+
+    public void enqueue(TreatmentRequest request) {
+        Node newNode = new Node(request);
+
+        if (rear == null) {
+            front = rear = newNode;
+        } else {
+            rear.next = newNode;
+            rear = newNode;
+        }
+        size++;
+    }
+
+    public TreatmentRequest dequeue() {
+        if (front == null) {
+            return null;
+        }
+
+        TreatmentRequest removed = front.request;
+        front = front.next;
+
+        if (front == null) {
+            rear = null;
+        }
+
+        size--;
+        return removed;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public void printQueue() {
+        Node temp = front;
+        while (temp != null) {
+            System.out.println(temp.request);
+            temp = temp.next;
+        }
+    }
+}
+
