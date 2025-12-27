@@ -1,5 +1,5 @@
 public class PatientList {              // create the patient list class
- private class Node {                   // create node class for linked list
+    private class Node {                   // create node class for linked list
         Patient patient;
         Node next;
         Node(Patient patient) {          // create node constructor
